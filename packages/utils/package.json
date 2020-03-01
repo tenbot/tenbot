@@ -1,0 +1,33 @@
+{
+  "name": "@tenbot/utils",
+  "version": "0.0.0",
+  "description": "Tenbot Utils - Tenbot 工具函数",
+  "homepage": "https://github.com/tenbot/tenbot",
+  "bugs": {
+    "url": "https://github.com/tenbot/tenbot/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tenbot/tenbot.git"
+  },
+  "license": "MIT",
+  "author": "meteorlxy <meteor.lxy@foxmail.com>",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "rimraf lib && tsc",
+    "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "xml2js": "^0.4.23"
+  },
+  "devDependencies": {
+    "@types/xml2js": "^0.4.5"
+  },
+  "engines": {
+    "node": ">=10"
+  }
+}

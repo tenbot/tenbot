@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2018",
+    "lib": ["es2018"],
+    "sourceMap": true,
+    "declaration": true,
+    "strictNullChecks": true
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "name": "@tenbot/plugin-cron",
+  "version": "0.0.0",
+  "description": "Tenbot Cron Plugin - Tenbot 定时任务插件",
+  "homepage": "https://github.com/tenbot/tenbot",
+  "bugs": {
+    "url": "https://github.com/tenbot/tenbot/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tenbot/tenbot.git"
+  },
+  "license": "MIT",
+  "author": "meteorlxy <meteor.lxy@foxmail.com>",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "rimraf lib && tsc",
+    "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "@tenbot/bot": "0.0.0",
+    "cron": "^1.8.2"
+  },
+  "devDependencies": {
+    "@types/cron": "^1.7.2"
+  },
+  "engines": {
+    "node": ">=10"
+  }
+}

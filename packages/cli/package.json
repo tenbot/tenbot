@@ -1,0 +1,30 @@
+{
+  "name": "@tenbot/cli",
+  "version": "0.0.0",
+  "description": "Tenbot Cli - Tenbot 命令行工具",
+  "homepage": "https://github.com/tenbot/tenbot",
+  "bugs": {
+    "url": "https://github.com/tenbot/tenbot/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tenbot/tenbot.git"
+  },
+  "license": "MIT",
+  "author": "meteorlxy <meteor.lxy@foxmail.com>",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "bin": {
+    "tenbot": "lib/index.js"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "rimraf lib && tsc",
+    "dev": "tsc --watch"
+  },
+  "engines": {
+    "node": ">=10"
+  }
+}

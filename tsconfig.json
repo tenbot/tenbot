@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "composite": true
+  },
+  "references": [
+    { "path": "./packages/app" },
+    { "path": "./packages/bot" },
+    { "path": "./packages/cipher" },
+    { "path": "./packages/cli" },
+    { "path": "./packages/plugin-cron" },
+    { "path": "./packages/utils" }
+  ],
+  "files": []
+}
