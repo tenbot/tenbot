@@ -7,6 +7,7 @@
     "build": "lerna run build --stream",
     "dev": "tsc -b --watch",
     "lint": "eslint --ext .js,.ts packages",
+    "release": "yarn lint && yarn test && yarn build && lerna publish",
     "test": "jest"
   },
   "husky": {
