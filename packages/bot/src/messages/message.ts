@@ -14,8 +14,8 @@ export type MessageType =
 export type MessageChatId = string | '@all_group' | '@all_subscriber' | '@all';
 
 export interface MessageOptions {
-  chatId?: MessageChatId;
-  visibleToUser?: string[];
+  chatId?: MessageChatId | MessageChatId[];
+  visibleToUser?: string | string[];
 }
 
 export interface MessageSendObject {
@@ -42,18 +42,20 @@ export abstract class Message {
    *
    * 聊天 ID
    */
-  protected readonly chatId?: string;
+  protected readonly chatId?: MessageChatId;
 
   /**
    * Array of visible users
    *
    * 用户数组，仅对这些用户可见
    */
-  protected readonly visibleToUser?: string[];
+  protected readonly visibleToUser?: string;
 
-  constructor(options: MessageOptions = {}) {
-    this.chatId = options.chatId;
-    this.visibleToUser = options.visibleToUser;
+  constructor({ chatId, visibleToUser }: MessageOptions) {
+    this.chatId = Array.isArray(chatId) ? chatId.join('|') : chatId;
+    this.visibleToUser = Array.isArray(visibleToUser)
+      ? visibleToUser.join('|')
+      : visibleToUser;
   }
 
   toSendObject(): MessageSendObject {
@@ -67,7 +69,7 @@ export abstract class Message {
 
     if (this.visibleToUser) {
       // eslint-disable-next-line @typescript-eslint/camelcase
-      sendObject.visible_to_user = this.visibleToUser.join('|');
+      sendObject.visible_to_user = this.visibleToUser;
     }
 
     return sendObject;
@@ -79,7 +81,7 @@ export abstract class Message {
     };
 
     if (this.visibleToUser) {
-      replyObject.VisibleToUser = this.visibleToUser.join('|');
+      replyObject.VisibleToUser = this.visibleToUser;
     }
 
     return replyObject;
