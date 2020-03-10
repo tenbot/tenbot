@@ -11,7 +11,7 @@ import {
  * 创建文字信息时的选项
  */
 export interface MessageTextOptions extends MessageOptions {
-  content: string;
+  content?: string;
   mentionedList?: string[];
   mentionedMobileList?: string[];
 }
@@ -25,9 +25,9 @@ export interface MessageTextSendObject extends MessageSendObject {
   msgtype: 'text';
   text: {
     content: string;
+    mentioned_list?: string[];
+    mentioned_mobile_list?: string[];
   };
-  mentioned_list?: string[];
-  mentioned_mobile_list?: string[];
 }
 
 /**
@@ -51,16 +51,16 @@ export interface MessageTextReplyObject extends MessageReplyObject {
 export class MessageText extends Message {
   protected readonly msgType: 'text';
 
+  protected readonly content: string;
+
   protected readonly mentionedList?: string[];
 
   protected readonly mentionedMobileList?: string[];
 
-  protected readonly content: string;
-
   constructor(options: MessageTextOptions) {
     super(options);
     this.msgType = 'text';
-    this.content = options.content;
+    this.content = options.content || '';
     this.mentionedList = options.mentionedList;
     this.mentionedMobileList = options.mentionedMobileList;
   }
@@ -84,12 +84,12 @@ export class MessageText extends Message {
 
     if (this.mentionedList) {
       // eslint-disable-next-line @typescript-eslint/camelcase
-      sendObject.mentioned_list = this.mentionedList;
+      sendObject.text.mentioned_list = this.mentionedList;
     }
 
     if (this.mentionedMobileList) {
       // eslint-disable-next-line @typescript-eslint/camelcase
-      sendObject.mentioned_mobile_list = this.mentionedMobileList;
+      sendObject.text.mentioned_mobile_list = this.mentionedMobileList;
     }
 
     return sendObject;
