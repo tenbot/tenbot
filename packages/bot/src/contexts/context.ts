@@ -188,7 +188,10 @@ export class Context<
     message: Message,
     url = this.bot.webhook
   ): Promise<AxiosResponse> {
-    return this.http.post(url, message.toSendObject());
+    const sendObject = message.toSendObject();
+    this.bot.debug(`POST ${url}`);
+    this.bot.debug(JSON.stringify(sendObject, null, '  '));
+    return this.http.post(url, sendObject);
   }
 
   /**
