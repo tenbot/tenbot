@@ -12,8 +12,8 @@ import {
  */
 export interface MessageTextOptions extends MessageOptions {
   content?: string;
-  mentionedList?: string[];
-  mentionedMobileList?: string[];
+  mentionedList?: (string | '@all')[];
+  mentionedMobileList?: (string | '@all')[];
 }
 
 /**
@@ -67,20 +67,12 @@ export class MessageText extends Message {
 
   toSendObject(): MessageTextSendObject {
     const sendObject: MessageTextSendObject = {
+      ...super.toSendObject(),
       msgtype: this.msgType,
       text: {
         content: this.content,
       },
     };
-
-    if (this.chatId) {
-      sendObject.chatid = this.chatId;
-    }
-
-    if (this.visibleToUser) {
-      // eslint-disable-next-line @typescript-eslint/camelcase
-      sendObject.visible_to_user = this.visibleToUser.join('|');
-    }
 
     if (this.mentionedList) {
       // eslint-disable-next-line @typescript-eslint/camelcase
@@ -97,15 +89,12 @@ export class MessageText extends Message {
 
   toReplyObject(): MessageTextReplyObject {
     const replyObject: MessageTextReplyObject = {
+      ...super.toReplyObject(),
       MsgType: this.msgType,
       Text: {
         Content: this.content,
       },
     };
-
-    if (this.visibleToUser) {
-      replyObject.VisibleToUser = this.visibleToUser.join('|');
-    }
 
     if (this.mentionedList) {
       replyObject.Text.MentionedList = {

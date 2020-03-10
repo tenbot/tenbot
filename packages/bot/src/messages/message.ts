@@ -11,8 +11,10 @@ export type MessageType =
   | 'attachment'
   | 'news';
 
+export type MessageChatId = string | '@all_group' | '@all_subscriber' | '@all';
+
 export interface MessageOptions {
-  chatId?: string;
+  chatId?: MessageChatId;
   visibleToUser?: string[];
 }
 
@@ -54,8 +56,34 @@ export abstract class Message {
     this.visibleToUser = options.visibleToUser;
   }
 
-  abstract toSendObject(): MessageSendObject;
-  abstract toReplyObject(): MessageReplyObject;
+  toSendObject(): MessageSendObject {
+    const sendObject: MessageSendObject = {
+      msgtype: this.msgType,
+    };
+
+    if (this.chatId) {
+      sendObject.chatid = this.chatId;
+    }
+
+    if (this.visibleToUser) {
+      // eslint-disable-next-line @typescript-eslint/camelcase
+      sendObject.visible_to_user = this.visibleToUser.join('|');
+    }
+
+    return sendObject;
+  }
+
+  toReplyObject(): MessageReplyObject {
+    const replyObject: MessageReplyObject = {
+      MsgType: this.msgType,
+    };
+
+    if (this.visibleToUser) {
+      replyObject.VisibleToUser = this.visibleToUser.join('|');
+    }
+
+    return replyObject;
+  }
 
   toSendString(): string {
     return JSON.stringify(this.toSendObject());

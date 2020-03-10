@@ -62,20 +62,12 @@ export class MessageMarkdown extends Message {
 
   toSendObject(): MessageMarkdownSendObject {
     const sendObject: MessageMarkdownSendObject = {
+      ...super.toSendObject(),
       msgtype: this.msgType,
       markdown: {
         content: this.content,
       },
     };
-
-    if (this.chatId) {
-      sendObject.chatid = this.chatId;
-    }
-
-    if (this.visibleToUser) {
-      // eslint-disable-next-line @typescript-eslint/camelcase
-      sendObject.visible_to_user = this.visibleToUser.join('|');
-    }
 
     if (this.attachments) {
       sendObject.markdown.attachments = this.attachments.map(attachment =>
@@ -88,15 +80,12 @@ export class MessageMarkdown extends Message {
 
   toReplyObject(): MessageMarkdownReplyObject {
     const replyObject: MessageMarkdownReplyObject = {
+      ...super.toReplyObject(),
       MsgType: this.msgType,
       Markdown: {
         Content: this.content,
       },
     };
-
-    if (this.visibleToUser) {
-      replyObject.VisibleToUser = this.visibleToUser.join('|');
-    }
 
     if (this.attachments) {
       replyObject.Markdown.Attachment = this.attachments.map(attachment =>

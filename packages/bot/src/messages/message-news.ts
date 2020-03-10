@@ -52,35 +52,24 @@ export class MessageNews extends Message {
 
   toSendObject(): MessageNewsSendObject {
     const sendObject: MessageNewsSendObject = {
+      ...super.toSendObject(),
       msgtype: this.msgType,
       news: {
         articles: this.articles.map(article => article.toSendObject()),
       },
     };
 
-    if (this.chatId) {
-      sendObject.chatid = this.chatId;
-    }
-
-    if (this.visibleToUser) {
-      // eslint-disable-next-line @typescript-eslint/camelcase
-      sendObject.visible_to_user = this.visibleToUser.join('|');
-    }
-
     return sendObject;
   }
 
   toReplyObject(): MessageNewsReplyObject {
     const replyObject: MessageNewsReplyObject = {
+      ...super.toReplyObject(),
       MsgType: this.msgType,
       News: {
         Article: this.articles.map(article => article.toReplyObject()),
       },
     };
-
-    if (this.visibleToUser) {
-      replyObject.VisibleToUser = this.visibleToUser.join('|');
-    }
 
     return replyObject;
   }

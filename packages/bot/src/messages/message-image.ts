@@ -57,6 +57,7 @@ export class MessageImage extends Message {
 
   toSendObject(): MessageImageSendObject {
     const sendObject: MessageImageSendObject = {
+      ...super.toSendObject(),
       msgtype: this.msgType,
       image: {
         base64: this.base64,
@@ -64,30 +65,18 @@ export class MessageImage extends Message {
       },
     };
 
-    if (this.chatId) {
-      sendObject.chatid = this.chatId;
-    }
-
-    if (this.visibleToUser) {
-      // eslint-disable-next-line @typescript-eslint/camelcase
-      sendObject.visible_to_user = this.visibleToUser.join('|');
-    }
-
     return sendObject;
   }
 
   toReplyObject(): MessageImageReplyObject {
     const replyObject: MessageImageReplyObject = {
+      ...super.toReplyObject(),
       MsgType: this.msgType,
       Image: {
         Base64: this.base64,
         Md5: this.md5,
       },
     };
-
-    if (this.visibleToUser) {
-      replyObject.VisibleToUser = this.visibleToUser.join('|');
-    }
 
     return replyObject;
   }
