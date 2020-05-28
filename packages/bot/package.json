@@ -1,6 +1,6 @@
 {
   "name": "@tenbot/bot",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.2",
   "description": "Tenbot Bot - Tenbot 企业微信机器人",
   "homepage": "https://github.com/tenbot/tenbot",
   "bugs": {
@@ -23,8 +23,8 @@
   },
   "dependencies": {
     "@koa/router": "^8.0.6",
-    "@tenbot/cipher": "1.0.0-alpha.0",
-    "@tenbot/utils": "1.0.0-alpha.0",
+    "@tenbot/cipher": "1.0.0-alpha.2",
+    "@tenbot/utils": "1.0.0-alpha.2",
     "@types/koa": "^2.11.0",
     "@types/koa__router": "^8.0.2",
     "axios": "^0.19.2",
