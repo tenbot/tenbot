@@ -1,3 +1,2 @@
-export function formatPath(str: string): string {
-  return str.replace(/\/?$/, '').replace(/^\/?/, '/');
-}
+export const formatPath = (str: string): string =>
+  str.replace(/\/?$/, '').replace(/^\/?/, '/');
