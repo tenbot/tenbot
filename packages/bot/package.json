@@ -25,15 +25,15 @@
     "@koa/router": "^8.0.6",
     "@tenbot/cipher": "1.0.0-alpha.0",
     "@tenbot/utils": "1.0.0-alpha.0",
+    "@types/koa": "^2.11.0",
+    "@types/koa__router": "^8.0.2",
     "axios": "^0.19.2",
     "debug": "^4.1.1",
     "eventemitter3": "^4.0.0",
     "koa": "^2.11.0"
   },
   "devDependencies": {
-    "@types/debug": "^4.1.5",
-    "@types/koa": "^2.11.0",
-    "@types/koa__router": "^8.0.2"
+    "@types/debug": "^4.1.5"
   },
   "engines": {
     "node": ">=10"

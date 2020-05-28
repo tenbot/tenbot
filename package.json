@@ -4,10 +4,11 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "lerna run build --stream",
+    "build": "tsc -b",
+    "clean": "tsc -b --clean",
     "dev": "tsc -b --watch",
     "lint": "eslint --ext .js,.ts packages",
-    "release": "yarn lint && yarn test && yarn build && lerna publish",
+    "release": "yarn lint && yarn test && yarn clean && yarn build && lerna publish",
     "test": "jest"
   },
   "husky": {
@@ -27,12 +28,7 @@
     "*.{json,md,yml}": "prettier --write",
     "package.json": "sort-package-json"
   },
-  "prettier": {
-    "semi": true,
-    "singleQuote": true,
-    "tabWidth": 2,
-    "trailingComma": "es5"
-  },
+  "prettier": "@meteorlxy/prettier-config",
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
