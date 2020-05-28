@@ -1,7 +1,7 @@
-import { Cipher } from '@tenbot/cipher';
+import { createCipher } from '@tenbot/cipher';
 
-describe('@tenbot/cipher > Cipher', () => {
-  const cipher = new Cipher({
+describe('@tenbot/cipher > createCipher', () => {
+  const cipher = createCipher({
     token: 'dwKeRLxHm6QJEge6zU',
     encodingAesKey: 's8zgLtxAfejeoSWW2SpseDIcEViK892hcPT9UQaMK7L',
   });
@@ -37,6 +37,14 @@ describe('@tenbot/cipher > Cipher', () => {
   describe('encrypt', () => {
     it('should get correct encrypted message', () => {
       const encryptedMessageWithRandom = cipher.encrypt(message, receiveId);
+      expect(cipher.decrypt(encryptedMessageWithRandom)).toEqual({
+        message,
+        receiveId,
+      });
+    });
+
+    it('should get correct encrypted message without specifying receiveId', () => {
+      const encryptedMessageWithRandom = cipher.encrypt(message);
       expect(cipher.decrypt(encryptedMessageWithRandom)).toEqual({
         message,
         receiveId,

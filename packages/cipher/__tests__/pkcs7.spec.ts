@@ -1,4 +1,4 @@
-import { pkcs7 } from '@tenbot/cipher';
+import { decrypt, encrypt } from '@tenbot/cipher';
 
 describe('@tenbot/cipher > pkcs7', () => {
   describe('decrypt', () => {
@@ -9,13 +9,13 @@ describe('@tenbot/cipher > pkcs7', () => {
         Buffer.alloc(28, 28),
       ]);
       const output = Buffer.from([1, 2, 3, 4]);
-      expect(pkcs7.decrypt(input, size).equals(output)).toBe(true);
+      expect(decrypt(input, size).equals(output)).toBe(true);
     });
 
     it('should return as is if the padding is not correct', () => {
       const size = 32;
       const input = Buffer.from([1, 2, 3, 99]);
-      expect(pkcs7.decrypt(input, size).equals(input)).toBe(true);
+      expect(decrypt(input, size).equals(input)).toBe(true);
     });
   });
 
@@ -27,7 +27,7 @@ describe('@tenbot/cipher > pkcs7', () => {
         Buffer.from([1, 2, 3, 4]),
         Buffer.alloc(28, 28),
       ]);
-      expect(pkcs7.encrypt(input, size).equals(output)).toBe(true);
+      expect(encrypt(input, size).equals(output)).toBe(true);
     });
   });
 });
