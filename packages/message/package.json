@@ -1,6 +1,6 @@
 {
   "name": "@tenbot/message",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.3",
   "description": "Tenbot Message - Tenbot 企业微信消息",
   "homepage": "https://github.com/tenbot/tenbot",
   "bugs": {
@@ -22,7 +22,7 @@
     "dev": "tsc --watch"
   },
   "dependencies": {
-    "@tenbot/utils": "1.0.0-alpha.2"
+    "@tenbot/utils": "1.0.0-alpha.3"
   },
   "engines": {
     "node": ">=10"
