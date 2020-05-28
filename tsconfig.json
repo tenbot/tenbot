@@ -5,6 +5,7 @@
     { "path": "./packages/bot" },
     { "path": "./packages/cipher" },
     { "path": "./packages/cli" },
+    { "path": "./packages/message" },
     { "path": "./packages/plugin-cron" },
     { "path": "./packages/utils" }
   ],

@@ -1,0 +1,33 @@
+{
+  "name": "@tenbot/message",
+  "version": "1.0.0-alpha.2",
+  "description": "Tenbot Message - Tenbot 企业微信消息",
+  "homepage": "https://github.com/tenbot/tenbot",
+  "bugs": {
+    "url": "https://github.com/tenbot/tenbot/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tenbot/tenbot.git"
+  },
+  "license": "MIT",
+  "author": "meteorlxy <meteor.lxy@foxmail.com>",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "rimraf lib && tsc",
+    "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "@tenbot/utils": "1.0.0-alpha.2"
+  },
+  "engines": {
+    "node": ">=10"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

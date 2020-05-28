@@ -75,12 +75,10 @@ export class MessageText extends Message {
     };
 
     if (this.mentionedList) {
-      // eslint-disable-next-line @typescript-eslint/camelcase
       sendObject.text.mentioned_list = this.mentionedList;
     }
 
     if (this.mentionedMobileList) {
-      // eslint-disable-next-line @typescript-eslint/camelcase
       sendObject.text.mentioned_mobile_list = this.mentionedMobileList;
     }
 
