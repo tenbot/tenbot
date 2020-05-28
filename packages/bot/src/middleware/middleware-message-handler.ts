@@ -1,11 +1,11 @@
-import { BotMiddleware } from './middleware';
+import { createBotMiddleware } from './middleware';
 
 /**
  * Message handler middleware
  *
  * 消息处理器
  */
-export const middlewareMessageHandler = new BotMiddleware({
+export const middlewareMessageHandler = createBotMiddleware({
   factory: (bot) => async (ctx, next): Promise<void> => {
     // get the message and type
     // 获取信息和类型

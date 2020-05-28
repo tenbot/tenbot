@@ -1,13 +1,13 @@
 import { xmlParse } from '@tenbot/utils';
-import { EncryptedWechatMessage } from '../wechat';
-import { BotMiddleware } from './middleware';
+import type { EncryptedWechatMessage } from '@tenbot/message';
+import { createBotMiddleware } from './middleware';
 
 /**
  * Verify if a request is sent from Wechat Work, and save encrypted message into state
  *
  * 验证请求是否来自企业微信，并将加密信息存入 state
  */
-export const middlewareVerification = new BotMiddleware({
+export const middlewareVerification = createBotMiddleware({
   method: ['get', 'post'],
   factory: (bot) => async (ctx, next): Promise<void> => {
     try {

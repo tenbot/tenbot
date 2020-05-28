@@ -2,8 +2,6 @@ import axios from 'axios';
 import type { AxiosInstance, AxiosResponse, AxiosRequestConfig } from 'axios';
 import * as EventEmitter from 'eventemitter3';
 import { hashMd5 } from '@tenbot/utils';
-import type { Bot } from '../bot';
-import type { WechatChatInfo, WechatResponseChatInfo } from '../wechat';
 import {
   MessageText,
   MessageMarkdown,
@@ -12,7 +10,7 @@ import {
   Article,
   Attachment,
   AttachmentActionButton,
-} from '../messages';
+} from '@tenbot/message';
 import type {
   Message,
   MessageTextOptions,
@@ -22,7 +20,10 @@ import type {
   ArticleOptions,
   AttachmentOptions,
   AttachmentActionButtonOptions,
-} from '../messages';
+  WechatChatInfo,
+  WechatResponseChatInfo,
+} from '@tenbot/message';
+import type { Bot } from '../bot';
 
 /**
  * Context class

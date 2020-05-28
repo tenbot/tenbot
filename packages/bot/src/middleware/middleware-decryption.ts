@@ -1,11 +1,11 @@
-import { BotMiddleware } from './middleware';
+import { createBotMiddleware } from './middleware';
 
 /**
  * Decrypt the message that sent from Wechat Work, and save the decrypted message into state
  *
  * 将来自企业微信的信息进行解密，并将解密后的信息存入 state
  */
-export const middlewareDecryption = new BotMiddleware({
+export const middlewareDecryption = createBotMiddleware({
   method: ['get', 'post'],
   factory: (bot) => async (ctx, next): Promise<void> => {
     // decrypt encrypted message

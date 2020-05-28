@@ -1,6 +1,4 @@
 import type { AxiosResponse } from 'axios';
-import type { Bot } from '../bot';
-import type { WechatMessage, WechatChatInfo } from '../wechat';
 import type {
   Message,
   MessageText,
@@ -11,7 +9,10 @@ import type {
   MessageImageOptions,
   MessageNews,
   MessageNewsOptions,
-} from '../messages';
+  WechatMessage,
+  WechatChatInfo,
+} from '@tenbot/message';
+import type { Bot } from '../bot';
 import { Context } from './context';
 
 export class MessageContext extends Context {

@@ -1,13 +1,13 @@
 import { xmlBuild } from '@tenbot/utils';
-import { Message } from '../messages';
-import { BotMiddleware } from './middleware';
+import { Message } from '@tenbot/message';
+import { createBotMiddleware } from './middleware';
 
 /**
  * Encrypt the message that is replying to Wechat Work
  *
  * 将要回复给企业微信的消息进行加密
  */
-export const middlewareEncryption = new BotMiddleware({
+export const middlewareEncryption = createBotMiddleware({
   factory: (bot) => async (ctx): Promise<void> => {
     const { replyMessage } = ctx.state;
 

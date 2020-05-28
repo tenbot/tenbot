@@ -1,7 +1,15 @@
 import * as debug from 'debug';
 import * as Router from '@koa/router';
-import { Cipher } from '@tenbot/cipher';
-import type { CipherOptions } from '@tenbot/cipher';
+import { createCipher } from '@tenbot/cipher';
+import type { Cipher, CipherOptions } from '@tenbot/cipher';
+import type {
+  WechatMessageType,
+  WechatMessageText,
+  WechatMessageImage,
+  WechatMessageEvent,
+  WechatMessageAttachment,
+  WechatMessage,
+} from '@tenbot/message';
 import { Context, MessageContext } from './contexts';
 import {
   middlewareDecryption,
@@ -18,14 +26,6 @@ import type {
   BotMessageHandler,
   BotPlugin,
 } from './types';
-import type {
-  WechatMessageType,
-  WechatMessageText,
-  WechatMessageImage,
-  WechatMessageEvent,
-  WechatMessageAttachment,
-  WechatMessage,
-} from './wechat';
 
 /**
  * Options required for creating a bot
@@ -100,7 +100,7 @@ export class Bot extends Context<BotEventTypes> {
     this.name = name;
     this.webhook = webhook;
     this.directReply = directReply;
-    this.cipher = new Cipher({ token, encodingAesKey });
+    this.cipher = createCipher({ token, encodingAesKey });
     this.messageHandlers = new Map();
     this.debug = debug(`tenbot:bot[${name}]`);
   }

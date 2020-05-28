@@ -1,15 +1,15 @@
 import type { ParameterizedContext as Ctx } from 'koa';
-import type { Bot } from './bot';
-import type { MessageContext } from './contexts';
-import type { Message } from './messages';
 import type {
+  Message,
   WechatMessage,
   WechatMessageBase,
   WechatMessageText,
   WechatMessageImage,
   WechatMessageEvent,
   WechatMessageAttachment,
-} from './wechat';
+} from '@tenbot/message';
+import type { Bot } from './bot';
+import type { MessageContext } from './contexts';
 
 /**
  * Koa state inside a bot

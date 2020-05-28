@@ -30,15 +30,19 @@ export interface BotMiddlewareOptions {
  *
  * 机器人中间件
  */
-export class BotMiddleware {
-  path = '/';
+export interface BotMiddleware {
+  path: string;
 
   methods: Array<'get' | 'post'>;
 
   factory: (bot: Bot) => Middleware<BotState>;
-
-  constructor({ method = 'post', factory }: BotMiddlewareOptions) {
-    this.methods = Array.isArray(method) ? method : [method];
-    this.factory = factory;
-  }
 }
+
+export const createBotMiddleware = ({
+  method = 'post',
+  factory,
+}: BotMiddlewareOptions): BotMiddleware => ({
+  path: '/',
+  methods: Array.isArray(method) ? method : [method],
+  factory,
+});

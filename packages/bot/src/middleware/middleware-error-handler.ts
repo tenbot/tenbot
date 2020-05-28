@@ -1,11 +1,11 @@
-import { BotMiddleware } from './middleware';
+import { createBotMiddleware } from './middleware';
 
 /**
  * Errors handler
  *
  * 错误处理器
  */
-export const middlewareErrorHandler = new BotMiddleware({
+export const middlewareErrorHandler = createBotMiddleware({
   method: ['get', 'post'],
   factory: (bot) => async (ctx, next): Promise<void> => {
     try {
