@@ -1,5 +1,5 @@
-import {
-  AttachmentAction,
+import { AttachmentAction } from './attachment-action';
+import type {
   AttachmentActionOptions,
   AttachmentActionSendObject,
   AttachmentActionReplyObject,
@@ -30,8 +30,11 @@ export interface AttachmentActionButtonReplyObject
 
 export class AttachmentActionButton extends AttachmentAction {
   protected readonly type: 'button';
+
   protected readonly replaceText?: string;
+
   protected readonly borderColor?: string;
+
   protected readonly textColor?: string;
 
   constructor(options: AttachmentActionButtonOptions) {

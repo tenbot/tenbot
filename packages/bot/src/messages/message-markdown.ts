@@ -1,10 +1,10 @@
-import {
-  Message,
+import { Message } from './message';
+import type {
   MessageOptions,
   MessageSendObject,
   MessageReplyObject,
 } from './message';
-import {
+import type {
   Attachment,
   AttachmentSendObject,
   AttachmentReplyObject,
@@ -70,7 +70,7 @@ export class MessageMarkdown extends Message {
     };
 
     if (this.attachments) {
-      sendObject.markdown.attachments = this.attachments.map(attachment =>
+      sendObject.markdown.attachments = this.attachments.map((attachment) =>
         attachment.toSendObject()
       );
     }
@@ -88,7 +88,7 @@ export class MessageMarkdown extends Message {
     };
 
     if (this.attachments) {
-      replyObject.Markdown.Attachment = this.attachments.map(attachment =>
+      replyObject.Markdown.Attachment = this.attachments.map((attachment) =>
         attachment.toReplyObject()
       );
     }

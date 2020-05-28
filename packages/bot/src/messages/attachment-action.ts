@@ -21,8 +21,11 @@ export interface AttachmentActionReplyObject {
 
 export abstract class AttachmentAction {
   protected readonly name: string;
+
   protected readonly text: string;
+
   protected readonly type: string;
+
   protected readonly value: string;
 
   constructor(options: AttachmentActionOptions) {
@@ -33,5 +36,6 @@ export abstract class AttachmentAction {
   }
 
   abstract toSendObject(): AttachmentActionSendObject;
+
   abstract toReplyObject(): AttachmentActionReplyObject;
 }

@@ -1,7 +1,7 @@
-import { Response } from 'request';
-import { Bot } from '../bot';
-import { WechatMessage, WechatChatInfo } from '../wechat';
-import {
+import type { AxiosResponse } from 'axios';
+import type { Bot } from '../bot';
+import type { WechatMessage, WechatChatInfo } from '../wechat';
+import type {
   Message,
   MessageText,
   MessageTextOptions,
@@ -117,7 +117,7 @@ export class MessageContext extends Context {
   async sendMessage(
     message: Message,
     url = this.message.webhookUrl || this.bot.webhook
-  ): Promise<Response> {
+  ): Promise<AxiosResponse> {
     return super.sendMessage(message, url);
   }
 }

@@ -7,7 +7,7 @@ import { BotMiddleware } from './middleware';
  */
 export const middlewareDecryption = new BotMiddleware({
   method: ['get', 'post'],
-  factory: bot => async (ctx, next): Promise<void> => {
+  factory: (bot) => async (ctx, next): Promise<void> => {
     // decrypt encrypted message
     // 将加密后的信息解密
     const { encryptedMessage } = ctx.state;

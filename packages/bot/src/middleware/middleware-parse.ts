@@ -8,7 +8,7 @@ import { BotMiddleware } from './middleware';
  * 解析解密后的信息，并将信息存入 state
  */
 export const middlewareParse = new BotMiddleware({
-  factory: bot => async (ctx, next): Promise<void> => {
+  factory: (bot) => async (ctx, next): Promise<void> => {
     // parse decrypted message
     // 解析解密后的信息
     const { xml: message } = await xmlParse<WechatMessage>(

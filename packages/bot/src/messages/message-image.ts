@@ -1,5 +1,5 @@
-import {
-  Message,
+import { Message } from './message';
+import type {
   MessageOptions,
   MessageSendObject,
   MessageReplyObject,

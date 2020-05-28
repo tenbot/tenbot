@@ -6,7 +6,7 @@ import { BotMiddleware } from './middleware';
  * 消息处理器
  */
 export const middlewareMessageHandler = new BotMiddleware({
-  factory: bot => async (ctx, next): Promise<void> => {
+  factory: (bot) => async (ctx, next): Promise<void> => {
     // get the message and type
     // 获取信息和类型
     const { message } = ctx.state;
@@ -38,7 +38,7 @@ export const middlewareMessageHandler = new BotMiddleware({
       } else {
         // if directReply mode is disabled, do not await the handler
         // 如果 directReply 模式关闭，则不必等待处理器完成
-        handler(message, context).catch(err => {
+        handler(message, context).catch((err) => {
           bot.emit('error', err);
           bot.emit('error/message-handler', err, message, context);
           bot.emit(`error/message-handler/${msgType}`, err, message, context);

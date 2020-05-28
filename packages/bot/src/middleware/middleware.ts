@@ -1,6 +1,6 @@
-import { Middleware } from 'koa';
-import { Bot } from '../bot';
-import { BotState } from '../types';
+import type { Middleware } from 'koa';
+import type { Bot } from '../bot';
+import type { BotState } from '../types';
 
 /**
  * Options for create bot middleware

@@ -1,6 +1,7 @@
 import * as debug from 'debug';
 import * as Router from '@koa/router';
-import { Cipher, CipherOptions } from '@tenbot/cipher';
+import { Cipher } from '@tenbot/cipher';
+import type { CipherOptions } from '@tenbot/cipher';
 import { Context, MessageContext } from './contexts';
 import {
   middlewareDecryption,
@@ -11,8 +12,13 @@ import {
   middlewareVerification,
   middlewareVerifyUrl,
 } from './middleware';
-import { BotState, BotEventTypes, BotMessageHandler, BotPlugin } from './types';
-import {
+import type {
+  BotState,
+  BotEventTypes,
+  BotMessageHandler,
+  BotPlugin,
+} from './types';
+import type {
   WechatMessageType,
   WechatMessageText,
   WechatMessageImage,
@@ -123,7 +129,7 @@ export class Bot extends Context<BotEventTypes> {
       middlewareParse,
       middlewareMessageHandler,
       middlewareEncryption,
-    ].forEach(middleware =>
+    ].forEach((middleware) =>
       router.register(
         middleware.path,
         middleware.methods,

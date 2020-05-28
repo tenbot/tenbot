@@ -21,8 +21,11 @@ export interface ArticleReplyObject {
 
 export class Article {
   protected readonly title: string;
+
   protected readonly description?: string;
+
   protected readonly url: string;
+
   protected readonly picurl?: string;
 
   constructor(options: ArticleOptions) {

@@ -98,7 +98,7 @@ export class App extends EventEmitter<AppEventTypes> {
         this.emit('server/close', server);
       });
 
-      server.on('error', err => {
+      server.on('error', (err) => {
         this.debug(`server.on('error'):`, err);
         this.emit('error', err);
         this.emit('error/server', err, server);

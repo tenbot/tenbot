@@ -1,8 +1,8 @@
-import { ParameterizedContext as Ctx } from 'koa';
-import { Bot } from './bot';
-import { MessageContext } from './contexts';
-import { Message } from './messages';
-import {
+import type { ParameterizedContext as Ctx } from 'koa';
+import type { Bot } from './bot';
+import type { MessageContext } from './contexts';
+import type { Message } from './messages';
+import type {
   WechatMessage,
   WechatMessageBase,
   WechatMessageText,

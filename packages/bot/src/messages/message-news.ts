@@ -1,10 +1,10 @@
-import {
-  Message,
+import { Message } from './message';
+import type {
   MessageOptions,
   MessageSendObject,
   MessageReplyObject,
 } from './message';
-import { Article, ArticleSendObject, ArticleReplyObject } from './article';
+import type { Article, ArticleSendObject, ArticleReplyObject } from './article';
 
 /**
  * Options when creating a news message
@@ -55,7 +55,7 @@ export class MessageNews extends Message {
       ...super.toSendObject(),
       msgtype: this.msgType,
       news: {
-        articles: this.articles.map(article => article.toSendObject()),
+        articles: this.articles.map((article) => article.toSendObject()),
       },
     };
 
@@ -67,7 +67,7 @@ export class MessageNews extends Message {
       ...super.toReplyObject(),
       MsgType: this.msgType,
       News: {
-        Article: this.articles.map(article => article.toReplyObject()),
+        Article: this.articles.map((article) => article.toReplyObject()),
       },
     };
 

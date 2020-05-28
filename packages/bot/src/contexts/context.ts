@@ -1,23 +1,26 @@
-import axios, { AxiosInstance, AxiosResponse, AxiosRequestConfig } from 'axios';
+import axios from 'axios';
+import type { AxiosInstance, AxiosResponse, AxiosRequestConfig } from 'axios';
 import * as EventEmitter from 'eventemitter3';
 import { hashMd5 } from '@tenbot/utils';
-import { Bot } from '../bot';
-import { WechatChatInfo, WechatResponseChatInfo } from '../wechat';
+import type { Bot } from '../bot';
+import type { WechatChatInfo, WechatResponseChatInfo } from '../wechat';
 import {
-  Message,
   MessageText,
-  MessageTextOptions,
   MessageMarkdown,
-  MessageMarkdownOptions,
   MessageImage,
-  MessageImageOptions,
   MessageNews,
-  MessageNewsOptions,
   Article,
-  ArticleOptions,
   Attachment,
-  AttachmentOptions,
   AttachmentActionButton,
+} from '../messages';
+import type {
+  Message,
+  MessageTextOptions,
+  MessageMarkdownOptions,
+  MessageImageOptions,
+  MessageNewsOptions,
+  ArticleOptions,
+  AttachmentOptions,
   AttachmentActionButtonOptions,
 } from '../messages';
 
@@ -73,10 +76,10 @@ export class Context<
       return {
         chatId,
         name,
-        members: members.map(({ userid: userId, alias, name }) => ({
+        members: members.map(({ userid: userId, alias, name: userName }) => ({
           userId,
           alias,
-          name,
+          name: userName,
         })),
       };
     } catch (err) {

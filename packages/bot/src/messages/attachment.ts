@@ -1,4 +1,4 @@
-import {
+import type {
   AttachmentAction,
   AttachmentActionSendObject,
   AttachmentActionReplyObject,
@@ -33,7 +33,7 @@ export class Attachment {
     const sendObject: AttachmentSendObject = {
       // eslint-disable-next-line @typescript-eslint/camelcase
       callback_id: this.callbackId,
-      actions: this.actions.map(action => action.toSendObject()),
+      actions: this.actions.map((action) => action.toSendObject()),
     };
 
     return sendObject;
@@ -42,7 +42,7 @@ export class Attachment {
   toReplyObject(): AttachmentReplyObject {
     const replyObject: AttachmentReplyObject = {
       CallbackId: this.callbackId,
-      Actions: this.actions.map(action => action.toReplyObject()),
+      Actions: this.actions.map((action) => action.toReplyObject()),
     };
 
     return replyObject;

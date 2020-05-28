@@ -8,7 +8,7 @@ import { BotMiddleware } from './middleware';
  * 将要回复给企业微信的消息进行加密
  */
 export const middlewareEncryption = new BotMiddleware({
-  factory: bot => async (ctx): Promise<void> => {
+  factory: (bot) => async (ctx): Promise<void> => {
     const { replyMessage } = ctx.state;
 
     if (replyMessage instanceof Message) {

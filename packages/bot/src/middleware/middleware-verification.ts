@@ -9,7 +9,7 @@ import { BotMiddleware } from './middleware';
  */
 export const middlewareVerification = new BotMiddleware({
   method: ['get', 'post'],
-  factory: bot => async (ctx, next): Promise<void> => {
+  factory: (bot) => async (ctx, next): Promise<void> => {
     try {
       let encryptedMessage: string;
       const { msg_signature: signature, timestamp, nonce, echostr } = ctx.query;
@@ -23,9 +23,11 @@ export const middlewareVerification = new BotMiddleware({
       } else if (ctx.method === 'POST') {
         // get encrypted XML from request body
         // 从请求 body 中获取加密的 XML
-        const encryptedXml: string = await new Promise(resolve => {
+        const encryptedXml: string = await new Promise((resolve) => {
           let data = '';
-          ctx.req.on('data', chunk => (data += chunk));
+          ctx.req.on('data', (chunk) => {
+            data += chunk;
+          });
           ctx.req.on('end', () => {
             resolve(data);
           });

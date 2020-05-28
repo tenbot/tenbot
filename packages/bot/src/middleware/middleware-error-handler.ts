@@ -7,7 +7,7 @@ import { BotMiddleware } from './middleware';
  */
 export const middlewareErrorHandler = new BotMiddleware({
   method: ['get', 'post'],
-  factory: bot => async (ctx, next): Promise<void> => {
+  factory: (bot) => async (ctx, next): Promise<void> => {
     try {
       await next();
     } catch (err) {
