@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.5](https://github.com/tenbot/tenbot/compare/v1.0.0-alpha.4...v1.0.0-alpha.5) (2020-05-28)
+
+### Reverts
+
+- refactor(plugin-cron): modify module augmentation name ([97b28d9](https://github.com/tenbot/tenbot/commit/97b28d9672d63f08c525a39e1abf94db95e2c217))
+
 # [1.0.0-alpha.4](https://github.com/tenbot/tenbot/compare/v1.0.0-alpha.3...v1.0.0-alpha.4) (2020-05-28)
 
 ### Features

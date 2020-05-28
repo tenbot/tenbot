@@ -1,6 +1,6 @@
 {
   "name": "@tenbot/plugin-cron",
-  "version": "1.0.0-alpha.4",
+  "version": "1.0.0-alpha.5",
   "description": "Tenbot Cron Plugin - Tenbot 定时任务插件",
   "homepage": "https://github.com/tenbot/tenbot",
   "bugs": {
