@@ -15,11 +15,11 @@ declare module '@tenbot/bot/lib/types' {
  */
 export interface AppEventTypes {
   'bot/register': [Bot, string];
-  start: [];
-  close: [];
+  'start': [];
+  'close': [];
   'server/start': [Server];
   'server/close': [Server];
-  error: [Error];
+  'error': [Error];
   'error/server': [Error, Server];
   [key: string]: unknown[];
 }

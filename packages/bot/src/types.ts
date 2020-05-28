@@ -39,12 +39,12 @@ export type BotMessageHandler<T extends WechatMessageBase = WechatMessage> = (
  * 机器人的事件类型
  */
 export interface BotEventTypes {
-  message: [WechatMessage, MessageContext];
+  'message': [WechatMessage, MessageContext];
   'message/text': [WechatMessageText, MessageContext];
   'message/image': [WechatMessageImage, MessageContext];
   'message/event': [WechatMessageEvent, MessageContext];
   'message/attachment': [WechatMessageAttachment, MessageContext];
-  error: [Error];
+  'error': [Error];
   'error/middleware': [Error, Ctx<BotState>];
   'error/message-handler': [Error, WechatMessage, MessageContext];
   'error/message-handler/text': [Error, WechatMessageText, MessageContext];
