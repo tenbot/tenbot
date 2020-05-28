@@ -9,7 +9,7 @@ module.exports = {
     '^@tenbot/(.*)$': '<rootDir>/packages/$1/src',
   },
 
-  testMatch: ['<rootDir>/packages/*/test/**/*.spec.ts'],
+  testMatch: ['<rootDir>/**/__tests__/**/*.spec.ts'],
 
   transform: {
     '^.+\\.ts$': 'ts-jest',

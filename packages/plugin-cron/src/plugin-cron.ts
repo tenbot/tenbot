@@ -1,6 +1,6 @@
 import { Bot, BotPlugin } from '@tenbot/bot';
 import { CronCommand, CronJob, CronTime } from 'cron';
-import { Moment } from 'moment';
+import type { Moment } from 'moment';
 
 // ConstructorParameters<T> cannot get correct params of overloaded constructor, so we manually add the type
 type CronJobParams =
@@ -71,7 +71,7 @@ declare module '@tenbot/bot/lib/bot' {
  *
  * @see https://github.com/kelektiv/node-cron
  */
-export const pluginCron: BotPlugin<{}> = bot => {
+export const pluginCron: BotPlugin<{}> = (bot) => {
   bot.cronJobs = [];
   bot.createCronJob = function createCronJob(
     ...params: ConstructorParameters<typeof CronJob>
