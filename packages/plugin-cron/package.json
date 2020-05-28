@@ -1,6 +1,6 @@
 {
   "name": "@tenbot/plugin-cron",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-alpha.4",
   "description": "Tenbot Cron Plugin - Tenbot 定时任务插件",
   "homepage": "https://github.com/tenbot/tenbot",
   "bugs": {
@@ -22,7 +22,7 @@
     "dev": "tsc --watch"
   },
   "dependencies": {
-    "@tenbot/bot": "1.0.0-alpha.3",
+    "@tenbot/bot": "1.0.0-alpha.4",
     "@types/cron": "^1.7.2",
     "cron": "^1.8.2"
   },

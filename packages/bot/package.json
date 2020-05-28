@@ -1,6 +1,6 @@
 {
   "name": "@tenbot/bot",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-alpha.4",
   "description": "Tenbot Bot - Tenbot 企业微信机器人",
   "homepage": "https://github.com/tenbot/tenbot",
   "bugs": {

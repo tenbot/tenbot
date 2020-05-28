@@ -1,6 +1,6 @@
 {
   "name": "@tenbot/app",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-alpha.4",
   "description": "Tenbot App - Tenbot 服务端应用",
   "homepage": "https://github.com/tenbot/tenbot",
   "bugs": {
@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@koa/router": "^8.0.6",
-    "@tenbot/bot": "1.0.0-alpha.3",
+    "@tenbot/bot": "1.0.0-alpha.4",
     "@tenbot/utils": "1.0.0-alpha.3",
     "debug": "^4.1.1",
     "eventemitter3": "^4.0.0",
