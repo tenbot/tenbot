@@ -7,7 +7,7 @@ type CronJobParams =
   | ConstructorParameters<typeof CronJob>
   | [string | Date | Moment, CronCommand, ...Array<unknown>];
 
-declare module '@tenbot/bot/lib/bot' {
+declare module '@tenbot/bot' {
   interface Bot {
     /**
      * Cron jobs of this bot
