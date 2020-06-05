@@ -32,7 +32,7 @@ import type {
  *
  * 创建机器人需要配置的选项
  */
-export interface BotOptions extends CipherOptions {
+export interface BotOptions extends Partial<CipherOptions> {
   name: string;
   webhook: string;
   directReply?: boolean;
@@ -93,8 +93,8 @@ export class Bot extends Context<BotEventTypes> {
     name,
     webhook,
     directReply = false,
-    token,
-    encodingAesKey,
+    token = '',
+    encodingAesKey = '',
   }: BotOptions) {
     super();
     this.name = name;
