@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.6](https://github.com/tenbot/tenbot/compare/v1.0.0-alpha.5...v1.0.0-alpha.6) (2020-06-05)
+
+### Bug Fixes
+
+- **bot:** allow webhook-only bot ([c735503](https://github.com/tenbot/tenbot/commit/c73550344a6ea6b79e40afddf96f69cc0b063d04))
+
 # [1.0.0-alpha.4](https://github.com/tenbot/tenbot/compare/v1.0.0-alpha.3...v1.0.0-alpha.4) (2020-05-28)
 
 ### Features

@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.6](https://github.com/tenbot/tenbot/compare/v1.0.0-alpha.5...v1.0.0-alpha.6) (2020-06-05)
+
+**Note:** Version bump only for package @tenbot/plugin-cron
+
 # [1.0.0-alpha.5](https://github.com/tenbot/tenbot/compare/v1.0.0-alpha.4...v1.0.0-alpha.5) (2020-05-28)
 
 ### Reverts
