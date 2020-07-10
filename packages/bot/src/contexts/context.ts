@@ -29,9 +29,7 @@ import type { Bot } from '../bot';
  * Context class
  */
 export class Context<
-  EventTypes extends string | symbol | { [K in keyof EventTypes]: unknown[] } =
-    | string
-    | symbol
+  EventTypes extends EventEmitter.ValidEventTypes = string | symbol
 > extends EventEmitter<EventTypes> {
   /**
    * The Bot that current context belongs to

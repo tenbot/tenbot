@@ -1,4 +1,5 @@
 import type { ParameterizedContext as Ctx } from 'koa';
+import type { ValidEventTypes } from 'eventemitter3';
 import type {
   Message,
   WechatMessage,
@@ -38,7 +39,8 @@ export type BotMessageHandler<T extends WechatMessageBase = WechatMessage> = (
  *
  * 机器人的事件类型
  */
-export interface BotEventTypes {
+export interface BotEventTypes
+  extends Exclude<ValidEventTypes, string | symbol> {
   'message': [WechatMessage, MessageContext];
   'message/text': [WechatMessageText, MessageContext];
   'message/image': [WechatMessageImage, MessageContext];
