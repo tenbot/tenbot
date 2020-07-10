@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.7](https://github.com/tenbot/tenbot/compare/v1.0.0-alpha.6...v1.0.0-alpha.7) (2020-07-10)
+
+### Bug Fixes
+
+- **bot:** refine eventemitter types ([a510946](https://github.com/tenbot/tenbot/commit/a51094664e05513dec4a0ebfae6f191f1adbedcb))
+
 # [1.0.0-alpha.6](https://github.com/tenbot/tenbot/compare/v1.0.0-alpha.5...v1.0.0-alpha.6) (2020-06-05)
 
 ### Bug Fixes
