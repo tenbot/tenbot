@@ -50,6 +50,3 @@ jobs:
 
       - name: Test
         run: npm test
-
-      - name: Docs build
-        run: npm run docs:build
