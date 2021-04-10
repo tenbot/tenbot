@@ -21,7 +21,7 @@
     <img src="https://badgen.net/github/last-commit/tenbot/tenbot?icon=github">
   </a>
 
-  <a href="https://github.com/tenbot/tenbot/blob/master/LICENSE" target="_blank">
+  <a href="https://github.com/tenbot/tenbot/blob/main/LICENSE" target="_blank">
     <img src="https://badgen.net/github/license/tenbot/tenbot">
   </a>
 </p>
@@ -36,4 +36,4 @@
 
 ## License
 
-[MIT](https://github.com/tenbot/tenbot/blob/master/LICENSE) &copy; [meteorlxy](https://github.com/meteorlxy) & [Contributors](https://github.com/tenbot/tenbot/graphs/contributors)
+[MIT](https://github.com/tenbot/tenbot/blob/main/LICENSE) &copy; [meteorlxy](https://github.com/meteorlxy) & [Contributors](https://github.com/tenbot/tenbot/graphs/contributors)
