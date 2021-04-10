@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.8](https://github.com/tenbot/tenbot/compare/v1.0.0-alpha.7...v1.0.0-alpha.8) (2021-04-10)
+
+### Features
+
+- **bot:** allow all axios request config when creating image from url ([f36c60d](https://github.com/tenbot/tenbot/commit/f36c60db8fbb2d88273641c64b6758296f2c81a0))
+
 # [1.0.0-alpha.7](https://github.com/tenbot/tenbot/compare/v1.0.0-alpha.6...v1.0.0-alpha.7) (2020-07-10)
 
 ### Bug Fixes

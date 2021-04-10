@@ -1,6 +1,6 @@
 {
   "name": "@tenbot/cli",
-  "version": "1.0.0-alpha.0",
+  "version": "1.0.0-alpha.8",
   "description": "Tenbot Cli - Tenbot 命令行工具",
   "homepage": "https://github.com/tenbot/tenbot",
   "bugs": {

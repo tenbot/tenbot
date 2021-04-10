@@ -1,6 +1,6 @@
 {
   "name": "@tenbot/cipher",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-alpha.8",
   "description": "Tenbot Cipher - Tenbot 加密解密工具",
   "homepage": "https://github.com/tenbot/tenbot",
   "bugs": {
@@ -22,7 +22,7 @@
     "dev": "tsc --watch"
   },
   "dependencies": {
-    "@tenbot/utils": "1.0.0-alpha.3"
+    "@tenbot/utils": "1.0.0-alpha.8"
   },
   "engines": {
     "node": ">=10"
