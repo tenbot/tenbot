@@ -12,13 +12,13 @@ export const middlewareParse = createBotMiddleware({
     // parse decrypted message
     // 解析解密后的信息
     const { xml: message } = await xmlParse<WechatMessage>(
-      ctx.state.decryptedMessage
+      ctx.state.decryptedMessage,
     );
 
     bot.debug(
       `message - type: ${message.msgType} - from: ${
         message.from.alias
-      } - content: ${JSON.stringify(message[message.msgType])}`
+      } - content: ${JSON.stringify(message[message.msgType])}`,
     );
 
     // save message to state

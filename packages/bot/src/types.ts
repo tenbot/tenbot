@@ -31,7 +31,7 @@ export interface BotState {
  */
 export type BotMessageHandler<T extends WechatMessageBase = WechatMessage> = (
   message: T,
-  context: MessageContext
+  context: MessageContext,
 ) => Promise<void>;
 
 /**
@@ -55,7 +55,7 @@ export interface BotEventTypes
   'error/message-handler/attachment': [
     Error,
     WechatMessageAttachment,
-    MessageContext
+    MessageContext,
   ];
   [key: string]: unknown[];
 }
@@ -65,7 +65,6 @@ export interface BotEventTypes
  *
  * 机器人插件
  */
-export type BotPlugin<Options extends object = {}> = (
-  bot: Bot,
-  options: Partial<Options>
-) => void;
+export type BotPlugin<
+  Options extends Record<string, unknown> = Record<never, never>
+> = (bot: Bot, options: Partial<Options>) => void;

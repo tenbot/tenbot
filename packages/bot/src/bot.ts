@@ -133,8 +133,8 @@ export class Bot extends Context<BotEventTypes> {
       router.register(
         middleware.path,
         middleware.methods,
-        middleware.factory(this)
-      )
+        middleware.factory(this),
+      ),
     );
     return router;
   }
@@ -144,9 +144,9 @@ export class Bot extends Context<BotEventTypes> {
    *
    * 为当前机器人使用插件
    */
-  plugin<T extends object>(
+  plugin<T extends Record<string, unknown>>(
     plugin: BotPlugin<T>,
-    options: T | boolean = true
+    options: T | boolean = true,
   ): this {
     // plugin is disabled
     // 插件已禁用

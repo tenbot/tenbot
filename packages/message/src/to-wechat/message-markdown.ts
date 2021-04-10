@@ -71,7 +71,7 @@ export class MessageMarkdown extends Message {
 
     if (this.attachments) {
       sendObject.markdown.attachments = this.attachments.map((attachment) =>
-        attachment.toSendObject()
+        attachment.toSendObject(),
       );
     }
 
@@ -89,7 +89,7 @@ export class MessageMarkdown extends Message {
 
     if (this.attachments) {
       replyObject.Markdown.Attachment = this.attachments.map((attachment) =>
-        attachment.toReplyObject()
+        attachment.toReplyObject(),
       );
     }
 

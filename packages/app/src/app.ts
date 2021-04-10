@@ -39,7 +39,7 @@ export class App extends EventEmitter<AppEventTypes> {
     const currentBot = this.bots.get(botPath);
     if (currentBot) {
       throw new Error(
-        `bot [${currentBot.name}] has already registered on path '${botPath}'`
+        `bot [${currentBot.name}] has already registered on path '${botPath}'`,
       );
     }
 

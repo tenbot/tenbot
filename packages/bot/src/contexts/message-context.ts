@@ -117,7 +117,7 @@ export class MessageContext extends Context {
    */
   async sendMessage(
     message: Message,
-    url = this.message.webhookUrl || this.bot.webhook
+    url = this.message.webhookUrl || this.bot.webhook,
   ): Promise<AxiosResponse> {
     return super.sendMessage(message, url);
   }

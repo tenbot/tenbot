@@ -2,7 +2,7 @@ import * as crypto from 'crypto';
 import { decrypt as pkcs7Decrypt } from './pkcs7';
 
 export type CipherDecrypt = (
-  encryptedMessage: string
+  encryptedMessage: string,
 ) => {
   message: string;
   receiveId: string;
@@ -24,7 +24,7 @@ export const createCipherDecrypt = ({
     .setAutoPadding(false);
 
   const aesDecryptedMessage = pkcs7Decrypt(
-    Buffer.concat([cipher.update(base64DecodedMessage), cipher.final()])
+    Buffer.concat([cipher.update(base64DecodedMessage), cipher.final()]),
   );
 
   // get message length from 16-20 bytes

@@ -25,7 +25,7 @@ export const createCipherEncrypt = ({
 
   // concat message
   const plainMessage = pkcs7Eecrypt(
-    Buffer.concat([random, messageLength, messageBuffer, receiveIdBuffer])
+    Buffer.concat([random, messageLength, messageBuffer, receiveIdBuffer]),
   );
 
   // generate encrypted message

@@ -10,7 +10,7 @@ describe('@tenbot/utils > hash', () => {
   describe('sha1', () => {
     it('should generate sha1 hash correctly', () => {
       expect(hashSha1('foobar')).toBe(
-        '8843d7f92416211de9ebb963ff4ce28125932878'
+        '8843d7f92416211de9ebb963ff4ce28125932878',
       );
     });
   });

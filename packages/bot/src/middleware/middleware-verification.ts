@@ -12,7 +12,12 @@ export const middlewareVerification = createBotMiddleware({
   factory: (bot) => async (ctx, next): Promise<void> => {
     try {
       let encryptedMessage: string;
-      const { msg_signature: signature, timestamp, nonce, echostr } = ctx.query;
+      const {
+        msg_signature: signature,
+        timestamp,
+        nonce,
+        echostr,
+      } = ctx.query as Record<string, string>;
 
       bot.debug(`${ctx.method} - ${ctx.path}${ctx.search}`);
 

@@ -71,7 +71,7 @@ declare module '@tenbot/bot/lib/bot' {
  *
  * @see https://github.com/kelektiv/node-cron
  */
-export const pluginCron: BotPlugin<{}> = (bot) => {
+export const pluginCron: BotPlugin<Record<never, never>> = (bot) => {
   bot.cronJobs = [];
   bot.createCronJob = function createCronJob(
     ...params: ConstructorParameters<typeof CronJob>

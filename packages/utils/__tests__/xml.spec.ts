@@ -16,7 +16,7 @@ describe('@tenbot/utils > xml', () => {
       expect(
         xmlBuild({
           Foo: 'bar',
-        })
+        }),
       ).toEqual('<xml><Foo>bar</Foo></xml>');
     });
   });

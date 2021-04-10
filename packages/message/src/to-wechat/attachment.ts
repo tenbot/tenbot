@@ -31,7 +31,6 @@ export class Attachment {
 
   toSendObject(): AttachmentSendObject {
     const sendObject: AttachmentSendObject = {
-      // eslint-disable-next-line @typescript-eslint/camelcase
       callback_id: this.callbackId,
       actions: this.actions.map((action) => action.toSendObject()),
     };

@@ -68,7 +68,6 @@ export abstract class Message {
     }
 
     if (this.visibleToUser) {
-      // eslint-disable-next-line @typescript-eslint/camelcase
       sendObject.visible_to_user = this.visibleToUser;
     }
 

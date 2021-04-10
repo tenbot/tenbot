@@ -54,17 +54,14 @@ export class AttachmentActionButton extends AttachmentAction {
     };
 
     if (this.replaceText) {
-      // eslint-disable-next-line @typescript-eslint/camelcase
       sendObject.replace_text = this.replaceText;
     }
 
     if (this.borderColor) {
-      // eslint-disable-next-line @typescript-eslint/camelcase
       sendObject.border_color = this.borderColor;
     }
 
     if (this.textColor) {
-      // eslint-disable-next-line @typescript-eslint/camelcase
       sendObject.text_color = this.textColor;
     }
 

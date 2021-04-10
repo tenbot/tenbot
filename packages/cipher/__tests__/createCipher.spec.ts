@@ -20,7 +20,7 @@ describe('@tenbot/cipher > createCipher', () => {
           timestamp,
           nonce,
           encryptedMessage,
-        })
+        }),
       ).toBe(signature);
     });
   });
