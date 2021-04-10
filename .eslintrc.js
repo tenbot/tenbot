@@ -5,6 +5,9 @@ module.exports = {
     {
       files: ['*.ts'],
       extends: '@meteorlxy/prettier-typescript',
+      parserOptions: {
+        project: ['tsconfig.eslint.json'],
+      },
       rules: {
         'no-console': 'off',
         'class-methods-use-this': 'off',

@@ -22,7 +22,7 @@
     "dev": "tsc --watch"
   },
   "dependencies": {
-    "@types/xml2js": "^0.4.5",
+    "@types/xml2js": "^0.4.8",
     "xml2js": "^0.4.23"
   },
   "engines": {
