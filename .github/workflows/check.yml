@@ -24,6 +24,9 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 
+      - name: Use Latest NPM
+        run: npm i -g npm
+
       - name: Get npm cache directory
         id: npm-cache-dir
         run: |
