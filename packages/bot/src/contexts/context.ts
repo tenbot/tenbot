@@ -123,10 +123,7 @@ export class Context<
   async createImageFromUrl(
     url: string,
     options?: Omit<MessageImageOptions, 'md5' | 'base64'>,
-    httpOptions?: Pick<
-      AxiosRequestConfig,
-      'timeout' | 'proxy' | 'httpAgent' | 'httpsAgent'
-    >
+    httpOptions?: AxiosRequestConfig
   ): Promise<MessageImage> {
     const { data } = await this.http.get<Buffer>(url, {
       responseType: 'arraybuffer',
@@ -234,10 +231,7 @@ export class Context<
   async sendImageFromUrl(
     url: string,
     options?: Omit<MessageImageOptions, 'md5' | 'base64'>,
-    httpOptions?: Pick<
-      AxiosRequestConfig,
-      'timeout' | 'proxy' | 'httpAgent' | 'httpsAgent'
-    >
+    httpOptions?: AxiosRequestConfig
   ): Promise<AxiosResponse> {
     const message = await this.createImageFromUrl(url, options, httpOptions);
     return this.sendMessage(message);
