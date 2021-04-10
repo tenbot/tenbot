@@ -4,7 +4,7 @@
   "version": "1.0.0-alpha.7",
   "command": {
     "version": {
-      "allowBranch": "master",
+      "allowBranch": "main",
       "conventionalCommits": true,
       "exact": true,
       "ignoreChanges": ["**/test/**", "**/*.md"],
