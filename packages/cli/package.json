@@ -15,9 +15,10 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "bin": {
-    "tenbot": "lib/index.js"
+    "tenbot": "bin/tenbot.js"
   },
   "files": [
+    "bin",
     "lib"
   ],
   "scripts": {
