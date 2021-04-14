@@ -1,5 +1,5 @@
-import axios from 'axios';
-import type { AxiosInstance, AxiosResponse, AxiosRequestConfig } from 'axios';
+import fetch from 'node-fetch';
+import type { RequestInit, Response } from 'node-fetch';
 import * as EventEmitter from 'eventemitter3';
 import { hashMd5 } from '@tenbot/utils';
 import {
@@ -38,20 +38,10 @@ export class Context<
    */
   readonly bot: Bot;
 
-  /**
-   * The http client used for sending http requests to Wechat Work server
-   *
-   * 用于向企业微信服务器发送请求的 HTTP 客户端
-   */
-  readonly http: AxiosInstance;
-
   constructor(bot?: Bot) {
     super();
     if (bot) {
       this.bot = bot;
-      this.http = bot.http;
-    } else {
-      this.http = axios.create();
     }
   }
 
@@ -62,9 +52,14 @@ export class Context<
    * 获取聊天信息
    * 如果不可获取则返回 null
    */
-  async getChatInfo(url: string): Promise<WechatChatInfo | null> {
+  async getChatInfo(
+    url: string,
+    init?: RequestInit,
+  ): Promise<WechatChatInfo | null> {
     try {
-      const { data } = await this.http.get<WechatResponseChatInfo>(url);
+      const data: WechatResponseChatInfo = await fetch(url, init).then((res) =>
+        res.json(),
+      );
 
       if (data.errcode !== 0) {
         throw new Error(data.errmsg);
@@ -123,12 +118,11 @@ export class Context<
   async createImageFromUrl(
     url: string,
     options?: Omit<MessageImageOptions, 'md5' | 'base64'>,
-    httpOptions?: AxiosRequestConfig,
+    init?: RequestInit,
   ): Promise<MessageImage> {
-    const { data } = await this.http.get<Buffer>(url, {
-      responseType: 'arraybuffer',
-      ...httpOptions,
-    });
+    const data: Buffer = await fetch(url, init)
+      .then((res) => res.arrayBuffer())
+      .then((res) => Buffer.from(res));
 
     const md5 = hashMd5(data);
     const base64 = data.toString('base64');
@@ -185,12 +179,22 @@ export class Context<
    */
   async sendMessage(
     message: Message,
-    url = this.bot.webhook,
-  ): Promise<AxiosResponse> {
+    toUrl = this.bot.webhook,
+    init?: RequestInit,
+  ): Promise<Response> {
     const sendObject = message.toSendObject();
-    this.bot.debug(`POST ${url}`);
+    this.bot.debug(`POST ${toUrl}`);
     this.bot.debug(JSON.stringify(sendObject, null, '  '));
-    return this.http.post(url, sendObject);
+
+    return fetch(toUrl, {
+      ...init,
+      method: 'POST',
+      headers: {
+        ...init?.headers,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(sendObject),
+    });
   }
 
   /**
@@ -198,9 +202,13 @@ export class Context<
    *
    * 创建并发送文字信息
    */
-  async sendText(options: MessageTextOptions): Promise<AxiosResponse> {
+  async sendText(
+    options: MessageTextOptions,
+    toUrl = this.bot.webhook,
+    init?: RequestInit,
+  ): Promise<Response> {
     const message = this.createText(options);
-    return this.sendMessage(message);
+    return this.sendMessage(message, toUrl, init);
   }
 
   /**
@@ -208,9 +216,13 @@ export class Context<
    *
    * 创建并发送 Markdown 信息
    */
-  async sendMarkdown(options: MessageMarkdownOptions): Promise<AxiosResponse> {
+  async sendMarkdown(
+    options: MessageMarkdownOptions,
+    toUrl = this.bot.webhook,
+    init?: RequestInit,
+  ): Promise<Response> {
     const message = this.createMarkdown(options);
-    return this.sendMessage(message);
+    return this.sendMessage(message, toUrl, init);
   }
 
   /**
@@ -218,9 +230,13 @@ export class Context<
    *
    * 创建并发送图片信息
    */
-  async sendImage(options: MessageImageOptions): Promise<AxiosResponse> {
+  async sendImage(
+    options: MessageImageOptions,
+    toUrl = this.bot.webhook,
+    init?: RequestInit,
+  ): Promise<Response> {
     const message = this.createImage(options);
-    return this.sendMessage(message);
+    return this.sendMessage(message, toUrl, init);
   }
 
   /**
@@ -229,12 +245,14 @@ export class Context<
    * 根据图片 URL 创建并发送图片信息
    */
   async sendImageFromUrl(
-    url: string,
+    imageUrl: string,
     options?: Omit<MessageImageOptions, 'md5' | 'base64'>,
-    httpOptions?: AxiosRequestConfig,
-  ): Promise<AxiosResponse> {
-    const message = await this.createImageFromUrl(url, options, httpOptions);
-    return this.sendMessage(message);
+    imageInit?: RequestInit,
+    toUrl = this.bot.webhook,
+    toInit?: RequestInit,
+  ): Promise<Response> {
+    const message = await this.createImageFromUrl(imageUrl, options, imageInit);
+    return this.sendMessage(message, toUrl, toInit);
   }
 
   /**
@@ -242,8 +260,12 @@ export class Context<
    *
    * 创建并发送图文信息
    */
-  async sendNews(options: MessageNewsOptions): Promise<AxiosResponse> {
+  async sendNews(
+    options: MessageNewsOptions,
+    toUrl = this.bot.webhook,
+    init?: RequestInit,
+  ): Promise<Response> {
     const message = this.createNews(options);
-    return this.sendMessage(message);
+    return this.sendMessage(message, toUrl, init);
   }
 }

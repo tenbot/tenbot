@@ -1,4 +1,4 @@
-import type { AxiosResponse } from 'axios';
+import type { Response } from 'node-fetch';
 import type {
   Message,
   MessageText,
@@ -118,7 +118,7 @@ export class MessageContext extends Context {
   async sendMessage(
     message: Message,
     url = this.message.webhookUrl || this.bot.webhook,
-  ): Promise<AxiosResponse> {
+  ): Promise<Response> {
     return super.sendMessage(message, url);
   }
 }
