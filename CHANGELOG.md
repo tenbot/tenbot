@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.9](https://github.com/tenbot/tenbot/compare/v1.0.0-alpha.8...v1.0.0-alpha.9) (2021-04-14)
+
+### Features
+
+- **bot:** migrate http client from axios to node-fetch ([203dc09](https://github.com/tenbot/tenbot/commit/203dc099487c3325cc5b44b7eb9006675b0f6905))
+
+### BREAKING CHANGES
+
+- **bot:** migrate http client from axios to node-fetch
+
 # [1.0.0-alpha.8](https://github.com/tenbot/tenbot/compare/v1.0.0-alpha.7...v1.0.0-alpha.8) (2021-04-10)
 
 ### Features

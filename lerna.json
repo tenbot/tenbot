@@ -1,7 +1,7 @@
 {
   "npmClient": "npm",
   "useWorkspaces": true,
-  "version": "1.0.0-alpha.8",
+  "version": "1.0.0-alpha.9",
   "command": {
     "version": {
       "allowBranch": "main",
