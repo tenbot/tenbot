@@ -24,12 +24,13 @@ import type {
   WechatResponseChatInfo,
 } from '@tenbot/message';
 import type { Bot } from '../bot';
+import type { ContextEventTypes } from '../types';
 
 /**
  * Context class
  */
 export class Context<
-  EventTypes extends EventEmitter.ValidEventTypes = string | symbol
+  EventTypes extends ContextEventTypes = ContextEventTypes
 > extends EventEmitter<EventTypes> {
   /**
    * The Bot that current context belongs to

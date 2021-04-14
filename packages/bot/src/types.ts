@@ -1,5 +1,4 @@
 import type { ParameterizedContext as Ctx } from 'koa';
-import type { ValidEventTypes } from 'eventemitter3';
 import type {
   Message,
   WechatMessage,
@@ -11,6 +10,13 @@ import type {
 } from '@tenbot/message';
 import type { Bot } from './bot';
 import type { MessageContext } from './contexts';
+
+/**
+ * Basic type of context events
+ *
+ * 上下文事件的基础类型
+ */
+export type ContextEventTypes = Record<string | number | symbol, unknown[]>;
 
 /**
  * Koa state inside a bot
@@ -39,8 +45,7 @@ export type BotMessageHandler<T extends WechatMessageBase = WechatMessage> = (
  *
  * 机器人的事件类型
  */
-export interface BotEventTypes
-  extends Exclude<ValidEventTypes, string | symbol> {
+export interface BotEventTypes extends ContextEventTypes {
   'message': [WechatMessage, MessageContext];
   'message/text': [WechatMessageText, MessageContext];
   'message/image': [WechatMessageImage, MessageContext];
@@ -57,7 +62,6 @@ export interface BotEventTypes
     WechatMessageAttachment,
     MessageContext,
   ];
-  [key: string]: unknown[];
 }
 
 /**
