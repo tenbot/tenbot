@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.10](https://github.com/tenbot/tenbot/compare/v1.0.0-alpha.9...v1.0.0-alpha.10) (2021-04-16)
+
+### Bug Fixes
+
+- **bot:** check if fetch response is valid ([a7d22f9](https://github.com/tenbot/tenbot/commit/a7d22f97ba2141802d1d8faf0eae010a4fa85012))
+
 # [1.0.0-alpha.9](https://github.com/tenbot/tenbot/compare/v1.0.0-alpha.8...v1.0.0-alpha.9) (2021-04-14)
 
 ### Features
