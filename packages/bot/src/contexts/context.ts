@@ -58,10 +58,14 @@ export class Context<
     init?: RequestInit,
   ): Promise<WechatChatInfo | null> {
     try {
-      const data: WechatResponseChatInfo = await fetch(url, init).then((res) =>
-        res.json(),
-      );
+      const res = await fetch(url, init);
+      if (!res.ok) {
+        throw new Error(
+          `request error with http status: ${res.status} ${res.statusText}`,
+        );
+      }
 
+      const data: WechatResponseChatInfo = await res.json();
       if (data.errcode !== 0) {
         throw new Error(data.errmsg);
       }
@@ -120,19 +124,38 @@ export class Context<
     url: string,
     options?: Omit<MessageImageOptions, 'md5' | 'base64'>,
     init?: RequestInit,
-  ): Promise<MessageImage> {
-    const data: Buffer = await fetch(url, init)
-      .then((res) => res.arrayBuffer())
-      .then((res) => Buffer.from(res));
+  ): Promise<MessageImage | null> {
+    try {
+      const res = await fetch(url, init);
+      if (!res.ok) {
+        throw new Error(
+          `request image error with http status: ${res.status} ${res.statusText}`,
+        );
+      }
 
-    const md5 = hashMd5(data);
-    const base64 = data.toString('base64');
+      const contentType = res.headers.get('content-type');
+      if (!contentType?.startsWith('image/')) {
+        throw new Error(
+          `request image error with wrong content-type: ${contentType}`,
+        );
+      }
 
-    return this.createImage({
-      md5,
-      base64,
-      ...options,
-    });
+      const arrayBuf = await res.arrayBuffer();
+      const buf = Buffer.from(arrayBuf);
+
+      const md5 = hashMd5(buf);
+      const base64 = buf.toString('base64');
+
+      return this.createImage({
+        md5,
+        base64,
+        ...options,
+      });
+    } catch (err) {
+      this.bot.debug(err);
+      this.bot.emit('error', err);
+      return null;
+    }
   }
 
   /**
@@ -251,8 +274,11 @@ export class Context<
     imageInit?: RequestInit,
     toUrl = this.bot.webhook,
     toInit?: RequestInit,
-  ): Promise<Response> {
+  ): Promise<Response | null> {
     const message = await this.createImageFromUrl(imageUrl, options, imageInit);
+    if (message === null) {
+      return null;
+    }
     return this.sendMessage(message, toUrl, toInit);
   }
 
