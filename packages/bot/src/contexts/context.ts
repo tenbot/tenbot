@@ -21,7 +21,7 @@ import type {
   AttachmentOptions,
   AttachmentActionButtonOptions,
   WechatChatInfo,
-  WechatResponseChatInfo,
+  WechatChatInfoResponse,
 } from '@tenbot/message';
 import type { Bot } from '../bot';
 import type { ContextEventTypes } from '../types';
@@ -65,7 +65,7 @@ export class Context<
         );
       }
 
-      const data: WechatResponseChatInfo = await res.json();
+      const data: WechatChatInfoResponse = await res.json();
       if (data.errcode !== 0) {
         throw new Error(data.errmsg);
       }

@@ -1,16 +1,29 @@
 import { xmlBuild } from '@tenbot/utils';
 
 /**
- * Type of message that can be sent to wechat
+ * Type of message to be sent to Wechat Work
+ *
+ * 发送给企业微信的信息的类型
  */
-export type MessageType =
+export type MessageMsgType =
+  // 文本
   | 'text'
+  // markdown
   | 'markdown'
+  // 图片
   | 'image'
-  | 'event'
-  | 'attachment'
-  | 'news';
+  // 图文
+  | 'news'
+  // 小程序
+  | 'miniprogram'
+  // 文件
+  | 'file';
 
+/**
+ * Chat ID of message to be sent to Wechat Work
+ *
+ * 发送给企业微信的信息的会话 ID
+ */
 export type MessageChatId = string | '@all_group' | '@all_subscriber' | '@all';
 
 export interface MessageOptions {
@@ -20,12 +33,12 @@ export interface MessageOptions {
 
 export interface MessageSendObject {
   chatid?: string;
-  msgtype: MessageType;
+  msgtype: MessageMsgType;
   visible_to_user?: string;
 }
 
 export interface MessageReplyObject {
-  MsgType: MessageType;
+  MsgType: MessageMsgType;
   VisibleToUser?: string;
 }
 
@@ -35,7 +48,7 @@ export abstract class Message {
    *
    * 消息类型
    */
-  protected readonly msgType: MessageType;
+  protected readonly msgType: MessageMsgType;
 
   /**
    * Chat ID

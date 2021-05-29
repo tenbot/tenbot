@@ -3,11 +3,12 @@ import * as Router from '@koa/router';
 import { createCipher } from '@tenbot/cipher';
 import type { Cipher, CipherOptions } from '@tenbot/cipher';
 import type {
-  WechatMessageType,
-  WechatMessageText,
-  WechatMessageImage,
-  WechatMessageEvent,
-  WechatMessageAttachment,
+  WechatMessageMsgType,
+  WechatTextMessage,
+  WechatImageMessage,
+  WechatEventMessage,
+  WechatAttachmentMessage,
+  WechatMixedMessage,
   WechatMessage,
 } from '@tenbot/message';
 import { Context, MessageContext } from './contexts';
@@ -78,7 +79,7 @@ export class Bot extends Context<BotEventTypes> {
    * 当前机器人的信息处理器
    */
   readonly messageHandlers: Map<
-    WechatMessageType | 'default',
+    WechatMessageMsgType | 'default',
     BotMessageHandler
   >;
 
@@ -184,7 +185,7 @@ export class Bot extends Context<BotEventTypes> {
    *
    * 文字消息处理器
    */
-  onText(handler: BotMessageHandler<WechatMessageText>): this {
+  onText(handler: BotMessageHandler<WechatTextMessage>): this {
     this.messageHandlers.set('text', handler);
     return this;
   }
@@ -194,7 +195,7 @@ export class Bot extends Context<BotEventTypes> {
    *
    * 图片消息处理器
    */
-  onImage(handler: BotMessageHandler<WechatMessageImage>): this {
+  onImage(handler: BotMessageHandler<WechatImageMessage>): this {
     this.messageHandlers.set('image', handler);
     return this;
   }
@@ -204,7 +205,7 @@ export class Bot extends Context<BotEventTypes> {
    *
    * 事件消息处理器
    */
-  onEvent(handler: BotMessageHandler<WechatMessageEvent>): this {
+  onEvent(handler: BotMessageHandler<WechatEventMessage>): this {
     this.messageHandlers.set('event', handler);
     return this;
   }
@@ -214,8 +215,18 @@ export class Bot extends Context<BotEventTypes> {
    *
    * 附件消息处理器
    */
-  onAttachment(handler: BotMessageHandler<WechatMessageAttachment>): this {
+  onAttachment(handler: BotMessageHandler<WechatAttachmentMessage>): this {
     this.messageHandlers.set('attachment', handler);
+    return this;
+  }
+
+  /**
+   * Mixed message handler
+   *
+   * 图文混排消息处理器
+   */
+  onMixed(handler: BotMessageHandler<WechatMixedMessage>): this {
+    this.messageHandlers.set('mixed', handler);
     return this;
   }
 }

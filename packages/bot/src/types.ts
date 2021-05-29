@@ -3,10 +3,11 @@ import type {
   Message,
   WechatMessage,
   WechatMessageBase,
-  WechatMessageText,
-  WechatMessageImage,
-  WechatMessageEvent,
-  WechatMessageAttachment,
+  WechatTextMessage,
+  WechatImageMessage,
+  WechatEventMessage,
+  WechatAttachmentMessage,
+  WechatMixedMessage,
 } from '@tenbot/message';
 import type { Bot } from './bot';
 import type { MessageContext } from './contexts';
@@ -47,21 +48,23 @@ export type BotMessageHandler<T extends WechatMessageBase = WechatMessage> = (
  */
 export interface BotEventTypes extends ContextEventTypes {
   'message': [WechatMessage, MessageContext];
-  'message/text': [WechatMessageText, MessageContext];
-  'message/image': [WechatMessageImage, MessageContext];
-  'message/event': [WechatMessageEvent, MessageContext];
-  'message/attachment': [WechatMessageAttachment, MessageContext];
+  'message/text': [WechatTextMessage, MessageContext];
+  'message/image': [WechatImageMessage, MessageContext];
+  'message/event': [WechatEventMessage, MessageContext];
+  'message/attachment': [WechatAttachmentMessage, MessageContext];
+  'message/mixed': [WechatMixedMessage, MessageContext];
   'error': [Error];
   'error/middleware': [Error, Ctx<BotState>];
   'error/message-handler': [Error, WechatMessage, MessageContext];
-  'error/message-handler/text': [Error, WechatMessageText, MessageContext];
-  'error/message-handler/image': [Error, WechatMessageImage, MessageContext];
-  'error/message-handler/event': [Error, WechatMessageEvent, MessageContext];
+  'error/message-handler/text': [Error, WechatTextMessage, MessageContext];
+  'error/message-handler/image': [Error, WechatImageMessage, MessageContext];
+  'error/message-handler/event': [Error, WechatEventMessage, MessageContext];
   'error/message-handler/attachment': [
     Error,
-    WechatMessageAttachment,
+    WechatAttachmentMessage,
     MessageContext,
   ];
+  'error/message-handler/mixed': [Error, WechatMixedMessage, MessageContext];
 }
 
 /**

@@ -1,22 +1,14 @@
-/**
- * Base fields of response of Wechat Work
- *
- * 企业微信响应的基本字段
- */
-export interface WechatResponseBase {
-  errcode: number;
-  errmsg: string;
-}
+import type { WechatResponseBase } from './base';
 
 /**
  * Chat info fields of response of Wechat Work
  *
  * 企业微信群聊资料的响应字段
  */
-export interface WechatResponseChatInfo extends WechatResponseBase {
+export interface WechatChatInfoResponse extends WechatResponseBase {
   chatid: string;
   name: string;
-  members: WechatResponseChatInfoUser[];
+  members: WechatChatInfoResponseUser[];
 }
 
 /**
@@ -24,7 +16,7 @@ export interface WechatResponseChatInfo extends WechatResponseBase {
  *
  * 企业微信响应的群聊资料中，用户资料的字段
  */
-export interface WechatResponseChatInfoUser {
+export interface WechatChatInfoResponseUser {
   userid: string;
   alias: string;
   name: string;
