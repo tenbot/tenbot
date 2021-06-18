@@ -7,15 +7,17 @@ import { createBotMiddleware } from './middleware';
  */
 export const middlewareDecryption = createBotMiddleware({
   method: ['get', 'post'],
-  factory: (bot) => async (ctx, next): Promise<void> => {
-    // decrypt encrypted message
-    // 将加密后的信息解密
-    const { encryptedMessage } = ctx.state;
-    const { message } = bot.cipher.decrypt(encryptedMessage);
+  factory:
+    (bot) =>
+    async (ctx, next): Promise<void> => {
+      // decrypt encrypted message
+      // 将加密后的信息解密
+      const { encryptedMessage } = ctx.state;
+      const { message } = bot.cipher.decrypt(encryptedMessage);
 
-    // save the decrypted message to state
-    // 将解密后的信息存入 state
-    ctx.state.decryptedMessage = message;
-    await next();
-  },
+      // save the decrypted message to state
+      // 将解密后的信息存入 state
+      ctx.state.decryptedMessage = message;
+      await next();
+    },
 });

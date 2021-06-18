@@ -7,9 +7,11 @@ import { createBotMiddleware } from './middleware';
  */
 export const middlewareVerifyUrl = createBotMiddleware({
   method: 'get',
-  factory: () => async (ctx): Promise<void> => {
-    // return the decrypted message back directly to verify the bot url
-    const { decryptedMessage } = ctx.state;
-    ctx.body = decryptedMessage;
-  },
+  factory:
+    () =>
+    async (ctx): Promise<void> => {
+      // return the decrypted message back directly to verify the bot url
+      const { decryptedMessage } = ctx.state;
+      ctx.body = decryptedMessage;
+    },
 });

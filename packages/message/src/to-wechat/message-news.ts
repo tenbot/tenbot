@@ -1,10 +1,10 @@
+import type { Article, ArticleSendObject, ArticleReplyObject } from './article';
 import { Message } from './message';
 import type {
   MessageOptions,
   MessageSendObject,
   MessageReplyObject,
 } from './message';
-import type { Article, ArticleSendObject, ArticleReplyObject } from './article';
 
 /**
  * Options when creating a news message

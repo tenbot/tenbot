@@ -1,4 +1,3 @@
-import * as debug from 'debug';
 import * as Router from '@koa/router';
 import { createCipher } from '@tenbot/cipher';
 import type { Cipher, CipherOptions } from '@tenbot/cipher';
@@ -11,6 +10,7 @@ import type {
   WechatMixedMessage,
   WechatMessage,
 } from '@tenbot/message';
+import * as debug from 'debug';
 import { Context, MessageContext } from './contexts';
 import {
   middlewareDecryption,

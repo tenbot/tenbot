@@ -6,18 +6,16 @@ export type CipherSignature = (opts: {
   encryptedMessage: string;
 }) => string;
 
-export const createCipherSignature = ({
-  token,
-}: {
-  token: string;
-}): CipherSignature => ({ timestamp, nonce, encryptedMessage }) => {
-  // sort and join: token, timestamp, nonce, encryptedMessage
-  const sortedString = [token, timestamp, nonce, encryptedMessage]
-    .sort()
-    .join('');
+export const createCipherSignature =
+  ({ token }: { token: string }): CipherSignature =>
+  ({ timestamp, nonce, encryptedMessage }) => {
+    // sort and join: token, timestamp, nonce, encryptedMessage
+    const sortedString = [token, timestamp, nonce, encryptedMessage]
+      .sort()
+      .join('');
 
-  // SHA1 hash
-  const signature = hashSha1(sortedString);
+    // SHA1 hash
+    const signature = hashSha1(sortedString);
 
-  return signature;
-};
+    return signature;
+  };

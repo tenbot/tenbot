@@ -1,5 +1,5 @@
-import { xmlParse } from '@tenbot/utils';
 import type { WechatMessage } from '@tenbot/message';
+import { xmlParse } from '@tenbot/utils';
 import { createBotMiddleware } from './middleware';
 
 /**
@@ -8,22 +8,24 @@ import { createBotMiddleware } from './middleware';
  * 解析解密后的信息，并将信息存入 state
  */
 export const middlewareParse = createBotMiddleware({
-  factory: (bot) => async (ctx, next): Promise<void> => {
-    // parse decrypted message
-    // 解析解密后的信息
-    const { xml: message } = await xmlParse<WechatMessage>(
-      ctx.state.decryptedMessage,
-    );
+  factory:
+    (bot) =>
+    async (ctx, next): Promise<void> => {
+      // parse decrypted message
+      // 解析解密后的信息
+      const { xml: message } = await xmlParse<WechatMessage>(
+        ctx.state.decryptedMessage,
+      );
 
-    bot.debug(
-      `message - type: ${message.msgType} - from: ${
-        message.from.alias
-      } - content: ${JSON.stringify(message[message.msgType])}`,
-    );
+      bot.debug(
+        `message - type: ${message.msgType} - from: ${
+          message.from.alias
+        } - content: ${JSON.stringify(message[message.msgType])}`,
+      );
 
-    // save message to state
-    // 将信息存入 state
-    ctx.state.message = message;
-    await next();
-  },
+      // save message to state
+      // 将信息存入 state
+      ctx.state.message = message;
+      await next();
+    },
 });

@@ -1,4 +1,3 @@
-import type { Response } from 'node-fetch';
 import type {
   Message,
   MessageText,
@@ -12,6 +11,7 @@ import type {
   WechatMessage,
   WechatChatInfo,
 } from '@tenbot/message';
+import type { Response } from 'node-fetch';
 import type { Bot } from '../bot';
 import { Context } from './context';
 

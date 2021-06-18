@@ -1,14 +1,14 @@
+import type {
+  Attachment,
+  AttachmentSendObject,
+  AttachmentReplyObject,
+} from './attachment';
 import { Message } from './message';
 import type {
   MessageOptions,
   MessageSendObject,
   MessageReplyObject,
 } from './message';
-import type {
-  Attachment,
-  AttachmentSendObject,
-  AttachmentReplyObject,
-} from './attachment';
 
 /**
  * Options when creating a markdown message

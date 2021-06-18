@@ -1,7 +1,3 @@
-import fetch from 'node-fetch';
-import type { RequestInit, Response } from 'node-fetch';
-import * as EventEmitter from 'eventemitter3';
-import { hashMd5 } from '@tenbot/utils';
 import {
   MessageText,
   MessageMarkdown,
@@ -23,6 +19,10 @@ import type {
   WechatChatInfo,
   WechatChatInfoResponse,
 } from '@tenbot/message';
+import { hashMd5 } from '@tenbot/utils';
+import * as EventEmitter from 'eventemitter3';
+import fetch from 'node-fetch';
+import type { RequestInit, Response } from 'node-fetch';
 import type { Bot } from '../bot';
 import type { ContextEventTypes } from '../types';
 
@@ -30,7 +30,7 @@ import type { ContextEventTypes } from '../types';
  * Context class
  */
 export class Context<
-  EventTypes extends ContextEventTypes = ContextEventTypes
+  EventTypes extends ContextEventTypes = ContextEventTypes,
 > extends EventEmitter<EventTypes> {
   /**
    * The Bot that current context belongs to

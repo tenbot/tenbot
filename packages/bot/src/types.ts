@@ -1,4 +1,3 @@
-import type { ParameterizedContext as Ctx } from 'koa';
 import type {
   Message,
   WechatMessage,
@@ -9,6 +8,7 @@ import type {
   WechatAttachmentMessage,
   WechatMixedMessage,
 } from '@tenbot/message';
+import type { ParameterizedContext as Ctx } from 'koa';
 import type { Bot } from './bot';
 import type { MessageContext } from './contexts';
 
@@ -73,5 +73,5 @@ export interface BotEventTypes extends ContextEventTypes {
  * 机器人插件
  */
 export type BotPlugin<
-  Options extends Record<string, unknown> = Record<never, never>
+  Options extends Record<string, unknown> = Record<never, never>,
 > = (bot: Bot, options: Partial<Options>) => void;
